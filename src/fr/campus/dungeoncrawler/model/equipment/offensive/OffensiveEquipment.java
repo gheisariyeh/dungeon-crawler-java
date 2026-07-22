@@ -1,12 +1,22 @@
-package fr.campus.dungeoncrawler.model.equipment;
+package fr.campus.dungeoncrawler.model.equipment.offensive;
 
-public class OffensiveEquipment {
+/**
+ * Represents offensive equipment that increases
+ * the attack capacity of a character.
+ */
+public abstract class OffensiveEquipment {
     // Fields
     private String type;
     private int attackLevel;
     private String name;
 
-    // Constructor
+    /**
+     * Creates offensive equipment.
+     *
+     * @param type the equipment type
+     * @param attackLevel the attack bonus
+     * @param name the equipment name
+     */
     public OffensiveEquipment(String type, int attackLevel, String name) {
         this.type = type;
         this.attackLevel = attackLevel;
@@ -41,9 +51,7 @@ public class OffensiveEquipment {
 
     @Override
     public String toString() {
-        return "OffensiveEquipment{" +
-                "type='" + type + '\'' +
-                ", attackLevel=" + attackLevel +
+        return "attackLevel=" + attackLevel +
                 ", name='" + name + '\'' +
                 '}';
     }

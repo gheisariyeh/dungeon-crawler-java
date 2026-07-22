@@ -6,7 +6,15 @@ import fr.campus.dungeoncrawler.ui.Menu;
 
 import java.util.Scanner;
 
+/**
+ * Entry point of the application.
+ */
 public class Main {
+    /**
+     * Starts the application.
+     *
+     * @param args command-line arguments
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 

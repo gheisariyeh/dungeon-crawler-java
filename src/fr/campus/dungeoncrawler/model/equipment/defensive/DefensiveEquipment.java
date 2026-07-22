@@ -1,12 +1,22 @@
-package fr.campus.dungeoncrawler.model.equipment;
+package fr.campus.dungeoncrawler.model.equipment.defensive;
 
-public class DefensiveEquipment {
+/**
+ * Represents defensive equipment that increases
+ * the defense capacity of a character.
+ */
+public abstract class DefensiveEquipment {
     // Fields
     private String type;
     private int defenseLevel;
     private String name;
 
-    // Constructor
+    /**
+     * Creates offensive equipment.
+     *
+     * @param type the equipment type
+     * @param defenseLevel the defense level
+     * @param name the equipment name
+     */
     public DefensiveEquipment(String type, int defenseLevel, String name) {
         this.type = type;
         this.defenseLevel = defenseLevel;

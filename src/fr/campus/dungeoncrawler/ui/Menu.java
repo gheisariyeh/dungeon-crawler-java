@@ -1,14 +1,19 @@
 package fr.campus.dungeoncrawler.ui;
 
 import fr.campus.dungeoncrawler.model.character.Character;
+import fr.campus.dungeoncrawler.model.character.Warrior;
+import fr.campus.dungeoncrawler.model.character.Wizard;
 
 import java.util.Scanner;
 
 public class Menu {
-    // Fields
     private final Scanner scanner;
 
-    // Constructor
+    /**
+     * Creates a menu using the specified scanner.
+     *
+     * @param scanner the scanner used to read user input
+     */
     public Menu(Scanner scanner) {
         this.scanner = scanner;
     }
@@ -36,10 +41,34 @@ public class Menu {
         System.out.println("2. Quit");
         System.out.println(">");
     }
+
+    /**
+     * Reads the user's choice.
+     *
+     * @return the number entered by the user
+     */
     public int readChoice() {
         return Integer.parseInt(scanner.nextLine());
     }
 
+    /**
+     *
+     * @return
+     */
+    public int readChoiceMenu(){
+        int choice = this.readChoice();
+        if(choice==2){
+            System.out.println("Goodbye!");
+            System.exit(0);
+        }
+        return choice;
+    }
+
+    /**
+     * Creates a character from the information entered by the user.
+     *
+     * @return the newly created character
+     */
     public Character createCharacter() {
         String type;
 
@@ -48,18 +77,23 @@ public class Menu {
             System.out.println("Choose Warrior or Wizard:");
             type = scanner.nextLine().trim();
 
-            if (type.equalsIgnoreCase("Warrior")
-                    || type.equalsIgnoreCase("Wizard")) {
-                break;
+            if (type.equalsIgnoreCase("Warrior")){
+                System.out.println("Enter character name:");
+                String name = scanner.nextLine().trim();
+                return new Warrior(name);
+            }
+            if (type.equalsIgnoreCase("Wizard")) {
+                System.out.println("Enter character name:");
+                String name = scanner.nextLine().trim();
+                return new Wizard(name);
             }
 
             System.out.println("Invalid character type.");
         }
 
-        System.out.println("Enter character name:");
-        String name = scanner.nextLine().trim();
 
-        return new Character(type, name);
+
+
     }
 
     public void waitForEnter() {
