@@ -1,6 +1,7 @@
 package fr.campus.dungeoncrawler.game;
 
 import fr.campus.dungeoncrawler.exception.OutOfBoardException;
+import fr.campus.dungeoncrawler.model.cell.Cell;
 import fr.campus.dungeoncrawler.model.character.Character;
 import fr.campus.dungeoncrawler.ui.Menu;
 
@@ -13,22 +14,28 @@ import fr.campus.dungeoncrawler.ui.Menu;
 public class Game {
     // Fields
     private final Menu menu;
-    private final Dice dice = new Dice();
+    private final Board board;
+    private final Dice dice;
 
     // Every new game starts on the first cell.
-    private int characterPosition = 1;
+    private int characterPosition = 0;
+
 
     /**
-     * Creates a game using the specified menu.
+     * Creates a new game with the specified menu.
+     * Initializes the board, the dice and the starting position.
      *
      * @param menu the menu used to interact with the player
      */
     public Game(Menu menu) {
         this.menu = menu;
+        this.board = new Board();
+        this.dice = new Dice();
     }
 
     /**
-     * Starts the application and manages character creation.
+     * Starts the application, creates the character,
+     * displays the menus and launches the game.
      */
     public void start() {
         Character character;
@@ -63,6 +70,8 @@ public class Game {
             try{
                 changePosition(dice.roll());
                 System.out.println("You move to cell " + characterPosition + "/64");
+                Cell currentCell = board.getCell(characterPosition);
+                System.out.println(currentCell);
             } catch (OutOfBoardException e) {
                 System.out.println(e.getMessage());
                 System.out.println(
@@ -75,10 +84,10 @@ public class Game {
     }
 
     /**
-     * Restart the game
+     * Restarts the game.
      */
     public void reStartGame(){
-        characterPosition = 1;
+        characterPosition = 0;
         startGame();
     }
 

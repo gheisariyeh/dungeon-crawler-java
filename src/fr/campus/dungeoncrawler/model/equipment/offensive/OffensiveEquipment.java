@@ -1,10 +1,12 @@
 package fr.campus.dungeoncrawler.model.equipment.offensive;
 
+import fr.campus.dungeoncrawler.model.cell.Cell;
+
 /**
  * Represents offensive equipment that increases
  * the attack capacity of a character.
  */
-public abstract class OffensiveEquipment {
+public abstract class OffensiveEquipment extends Cell {
     // Fields
     private String type;
     private int attackLevel;

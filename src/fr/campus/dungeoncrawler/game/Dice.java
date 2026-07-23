@@ -11,10 +11,11 @@ public class Dice {
     /**
      * Rolls the dice and generates a value between 1 and 6.
      *
-     * @return a random integer between 1 and 6
+     * @return 1 for testing in Iteration 4
      */
     public int roll(){
-        return random.nextInt(6) + 1;
+        return 1;
+        //return random.nextInt(6) + 1;
 
     }
 }

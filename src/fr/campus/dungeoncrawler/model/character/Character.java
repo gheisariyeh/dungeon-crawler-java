@@ -1,12 +1,13 @@
 package fr.campus.dungeoncrawler.model.character;
 
+import fr.campus.dungeoncrawler.model.equipment.defensive.DefensiveEquipment;
 import fr.campus.dungeoncrawler.model.equipment.offensive.OffensiveEquipment;
 
 /**
  * Represents a general character in the game.
  *
  * <p>A character has a name, a health level, an attack level
- * and offensive equipment.</p>
+ * and offensive, defensive equipments.</p>
  */
 public abstract class Character {
     // Fields
@@ -15,6 +16,7 @@ public abstract class Character {
     protected int healthLevel;
     protected int attackLevel;
     protected OffensiveEquipment offensiveEquipment;
+    protected DefensiveEquipment defensiveEquipment;
 
     /**
      * Creates a character with the specified characteristics.
@@ -24,13 +26,15 @@ public abstract class Character {
      * @param healthLevel the initial health level
      * @param attackLevel the initial attack level
      * @param offensiveEquipment the default offensive equipment
+     * @param defensiveEquipment the default defensive equipment
      */
-    public Character(String type, String name, int healthLevel, int attackLevel, OffensiveEquipment offensiveEquipment) {
+    public Character(String type, String name, int healthLevel, int attackLevel, OffensiveEquipment offensiveEquipment, DefensiveEquipment defensiveEquipment) {
         this.type = type;
         this.name = name;
         this.healthLevel = healthLevel;
         this.attackLevel = attackLevel;
         this.offensiveEquipment = offensiveEquipment;
+        this.defensiveEquipment = defensiveEquipment;
     }
 
     // Getters

@@ -1,10 +1,13 @@
 package fr.campus.dungeoncrawler.model.equipment.defensive;
 
+import fr.campus.dungeoncrawler.model.cell.Cell;
+import fr.campus.dungeoncrawler.model.character.Character;
+
 /**
  * Represents defensive equipment that increases
  * the defense capacity of a character.
  */
-public abstract class DefensiveEquipment {
+public abstract class DefensiveEquipment extends Cell {
     // Fields
     private String type;
     private int defenseLevel;

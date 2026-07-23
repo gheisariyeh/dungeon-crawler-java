@@ -1,7 +1,9 @@
 fr.campus.dungeoncrawler
 fr.campus.dungeoncrawler.exception
 fr.campus.dungeoncrawler.game
+fr.campus.dungeoncrawler.model.cell
 fr.campus.dungeoncrawler.model.character
+fr.campus.dungeoncrawler.model.enemy
 fr.campus.dungeoncrawler.model.equipment.defensive
 fr.campus.dungeoncrawler.model.equipment.offensive
 fr.campus.dungeoncrawler.ui

@@ -1,4 +1,5 @@
 package fr.campus.dungeoncrawler.model.character;
+import fr.campus.dungeoncrawler.model.equipment.defensive.Shield;
 import fr.campus.dungeoncrawler.model.equipment.offensive.Weapon;
 
 /**
@@ -19,7 +20,8 @@ public class Warrior extends Character{
                 name,
                 10,
                 5,
-                new Weapon("weapon" , 3, "Club")
+                new Weapon(3, "Club"),
+                new Shield(3, "Wooden Shield")
         );
     }
 }

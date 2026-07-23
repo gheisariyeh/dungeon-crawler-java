@@ -1,4 +1,5 @@
 package fr.campus.dungeoncrawler.model.character;
+import fr.campus.dungeoncrawler.model.equipment.defensive.Potion;
 import fr.campus.dungeoncrawler.model.equipment.offensive.Spell;
 
 /**
@@ -14,7 +15,8 @@ public class Wizard extends Character{
                 name,
                 7,
                 7,
-                new Spell( "spell",2, "Lightning")
+                new Spell( 2, "Lightning"),
+                new Potion(3, "Healing Potion")
         );
     }
 }
