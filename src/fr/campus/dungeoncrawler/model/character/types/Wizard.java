@@ -1,4 +1,5 @@
-package fr.campus.dungeoncrawler.model.character;
+package fr.campus.dungeoncrawler.model.character.types;
+import fr.campus.dungeoncrawler.model.character.Character;
 import fr.campus.dungeoncrawler.model.equipment.defensive.Potion;
 import fr.campus.dungeoncrawler.model.equipment.offensive.Spell;
 
@@ -8,7 +9,7 @@ import fr.campus.dungeoncrawler.model.equipment.offensive.Spell;
  * <p>A wizard starts with 7 health points,
  * 7 attack points and a Lightning.</p>
  */
-public class Wizard extends Character{
+public class Wizard extends Character {
     public Wizard(String name) {
         super(
                 "Wizard",

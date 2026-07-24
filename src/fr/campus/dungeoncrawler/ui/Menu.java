@@ -1,8 +1,8 @@
 package fr.campus.dungeoncrawler.ui;
 
 import fr.campus.dungeoncrawler.model.character.Character;
-import fr.campus.dungeoncrawler.model.character.Warrior;
-import fr.campus.dungeoncrawler.model.character.Wizard;
+import fr.campus.dungeoncrawler.model.character.types.Warrior;
+import fr.campus.dungeoncrawler.model.character.types.Wizard;
 
 import java.util.Scanner;
 
@@ -28,10 +28,15 @@ public class Menu {
 
     public void displaySecondMenu() {
         System.out.println("");
-        System.out.println("please choose option number 1 or 2");
+        System.out.println("please choose between the options:");
         System.out.println("1. Start with new character");
         System.out.println("2. Quit");
+        System.out.println("3. Change character name");
+        //System.out.println("4. Change character type");
         System.out.println(">");
+    }
+    public void displayChangeName(){
+        System.out.println("Enter new name: ");
     }
 
     public void displayThirdMenu(){
@@ -95,6 +100,12 @@ public class Menu {
 
 
     }
+
+    public String newName(){
+        String name = scanner.nextLine().trim();
+        return name;
+    }
+
 
     public void waitForEnter() {
         System.out.println("Press Enter to roll the dice.");

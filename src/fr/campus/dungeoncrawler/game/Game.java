@@ -1,5 +1,6 @@
 package fr.campus.dungeoncrawler.game;
 
+import fr.campus.dungeoncrawler.db.DatabaseManager;
 import fr.campus.dungeoncrawler.exception.OutOfBoardException;
 import fr.campus.dungeoncrawler.model.cell.Cell;
 import fr.campus.dungeoncrawler.model.character.Character;
@@ -16,9 +17,10 @@ public class Game {
     private final Menu menu;
     private final Board board;
     private final Dice dice;
+    private final DatabaseManager databaseManager;
 
     // Every new game starts on the first cell.
-    private int characterPosition = 0;
+    private int characterPosition = 1;
 
 
     /**
@@ -31,6 +33,7 @@ public class Game {
         this.menu = menu;
         this.board = new Board();
         this.dice = new Dice();
+        this.databaseManager = new DatabaseManager();
     }
 
     /**
@@ -42,11 +45,20 @@ public class Game {
         menu.displayMainMenu();
 
         int choice = menu.readChoiceMenu();
-
         character = menu.createCharacter();
+        int characterId = databaseManager.createHero(character);
         menu.displayCharacter(character);
+
         menu.displaySecondMenu();
         choice = menu.readChoiceMenu();
+        while (choice == 3){
+            menu.displayChangeName();
+            String newName = menu.newName();
+            character.setName(newName);
+            databaseManager.editHeroName(characterId, character);
+            menu.displaySecondMenu();
+            choice = menu.readChoiceMenu();
+        }
 
         System.out.println("Starting...");
         startGame();
@@ -56,12 +68,15 @@ public class Game {
         reStartGame();
     }
 
+    private void editCharachterName() {
+
+    }
+
     /**
      * Starts the board game and continues until the character
      * reaches the final cell.
      */
     public void startGame(){
-        int diceResult;
         while (characterPosition<64) {
 
             menu.waitForEnter();

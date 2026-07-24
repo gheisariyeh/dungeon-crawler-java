@@ -58,6 +58,10 @@ public abstract class Character {
         return offensiveEquipment;
     }
 
+    public DefensiveEquipment getDefensiveEquipment() {
+        return defensiveEquipment;
+    }
+
     // Setters
     public void setType(String type) {
         this.type = type;
@@ -79,6 +83,10 @@ public abstract class Character {
         this.offensiveEquipment = offensiveEquipment;
     }
 
+    public void setDefensiveEquipment(DefensiveEquipment defensiveEquipment) {
+        this.defensiveEquipment = defensiveEquipment;
+    }
+
     @Override
     public String toString() {
         return "Character{" +
@@ -86,8 +94,8 @@ public abstract class Character {
                 ", name='" + name + '\'' +
                 ", healthLevel=" + healthLevel +
                 ", attackLevel=" + attackLevel +
-                ", equipment='" + offensiveEquipment + '\'' +
+                ", offensiveEquipment=" + offensiveEquipment.getName() +
+                ", defensiveEquipment=" + defensiveEquipment.getName() +
                 '}';
     }
-
 }
