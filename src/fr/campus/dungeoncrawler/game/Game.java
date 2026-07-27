@@ -17,10 +17,11 @@ public class Game {
     private final Menu menu;
     private final Board board;
     private final Dice dice;
-    private final DatabaseManager databaseManager;
+    //private final DatabaseManager databaseManager;
 
-    // Every new game starts on the first cell.
-    private int characterPosition = 1;
+    // Position 0 means that the character has not entered the board yet.
+    private int characterPosition = 0;
+    private Character character;
 
 
     /**
@@ -33,7 +34,7 @@ public class Game {
         this.menu = menu;
         this.board = new Board();
         this.dice = new Dice();
-        this.databaseManager = new DatabaseManager();
+        //this.databaseManager = new DatabaseManager();
     }
 
     /**
@@ -41,21 +42,29 @@ public class Game {
      * displays the menus and launches the game.
      */
     public void start() {
-        Character character;
+        int  choice;
         menu.displayMainMenu();
-
-        int choice = menu.readChoiceMenu();
+        menu.verifyChoice();
         character = menu.createCharacter();
-        int characterId = databaseManager.createHero(character);
+        //int characterId = databaseManager.createHero(character);
         menu.displayCharacter(character);
 
         menu.displaySecondMenu();
-        choice = menu.readChoiceMenu();
+        while(true){
+            try {
+                choice = menu.readChoiceMenu();
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Please choose between the options: ");
+            }
+        }
+
         while (choice == 3){
             menu.displayChangeName();
             String newName = menu.newName();
             character.setName(newName);
-            databaseManager.editHeroName(characterId, character);
+            System.out.println(character);
+            //databaseManager.editHeroName(characterId, character);
             menu.displaySecondMenu();
             choice = menu.readChoiceMenu();
         }
@@ -63,13 +72,8 @@ public class Game {
         System.out.println("Starting...");
         startGame();
         menu.displayThirdMenu();
-        choice = menu.readChoiceMenu();
-
+        menu.verifyChoice();
         reStartGame();
-    }
-
-    private void editCharachterName() {
-
     }
 
     /**
@@ -78,15 +82,14 @@ public class Game {
      */
     public void startGame(){
         while (characterPosition<64) {
-
             menu.waitForEnter();
-
             // Prevent the player from moving beyond the last cell.
             try{
                 changePosition(dice.roll());
                 System.out.println("You move to cell " + characterPosition + "/64");
-                Cell currentCell = board.getCell(characterPosition);
+                Cell currentCell = board.getCell(characterPosition - 1);
                 System.out.println(currentCell);
+                currentCell.interact(character);
             } catch (OutOfBoardException e) {
                 System.out.println(e.getMessage());
                 System.out.println(
@@ -103,7 +106,7 @@ public class Game {
      */
     public void reStartGame(){
         characterPosition = 0;
-        startGame();
+        start();
     }
 
     /**
@@ -115,7 +118,7 @@ public class Game {
     public void changePosition (int diceResult) throws OutOfBoardException{
         System.out.println("Dice result: " + diceResult);
         int newPosition = characterPosition + diceResult;
-        if (newPosition>64){
+        if (newPosition > 64){
             throw new OutOfBoardException(">>> You've passed cell 64");
         }
         characterPosition += diceResult;

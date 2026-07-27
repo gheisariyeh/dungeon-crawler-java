@@ -1,7 +1,7 @@
 package fr.campus.dungeoncrawler.model.character.types;
 import fr.campus.dungeoncrawler.model.character.Character;
-import fr.campus.dungeoncrawler.model.equipment.defensive.Shield;
-import fr.campus.dungeoncrawler.model.equipment.offensive.Weapon;
+import fr.campus.dungeoncrawler.model.equipment.defensive.shield.Shield;
+import fr.campus.dungeoncrawler.model.equipment.offensive.weapon.Weapon;
 
 /**
  * Represents a warrior character.

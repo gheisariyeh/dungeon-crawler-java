@@ -2,6 +2,8 @@
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+*.iws
+*.ipr
 
 ### Eclipse ###
 .apt_generated
@@ -37,3 +39,25 @@ bin/
 
 # Operating system
 Thumbs.db
+
+
+# Maven
+target/
+
+# Gradle
+.gradle/
+build/
+
+# Compiled files
+*.exe
+*.jar
+*.ear
+
+# Environment and local configuration
+.env
+application-local.properties
+application-local.yml
+application-local.yaml
+
+# Logs
+*.log

@@ -1,7 +1,7 @@
 package fr.campus.dungeoncrawler.model.character.types;
 import fr.campus.dungeoncrawler.model.character.Character;
-import fr.campus.dungeoncrawler.model.equipment.defensive.Potion;
-import fr.campus.dungeoncrawler.model.equipment.offensive.Spell;
+import fr.campus.dungeoncrawler.model.equipment.defensive.potion.Potion;
+import fr.campus.dungeoncrawler.model.equipment.offensive.spell.Spell;
 
 /**
  * Represents a wizard character.
@@ -10,6 +10,11 @@ import fr.campus.dungeoncrawler.model.equipment.offensive.Spell;
  * 7 attack points and a Lightning.</p>
  */
 public class Wizard extends Character {
+    /**
+     * Creates a wizard with the specified name.
+     *
+     * @param name the wizard's name
+     */
     public Wizard(String name) {
         super(
                 "Wizard",

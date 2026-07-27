@@ -6,7 +6,7 @@ import fr.campus.dungeoncrawler.model.cell.Cell;
  * Represents offensive equipment that increases
  * the attack capacity of a character.
  */
-public abstract class OffensiveEquipment extends Cell {
+public abstract class OffensiveEquipment implements Cell {
     // Fields
     private String type;
     private int attackLevel;
@@ -53,7 +53,9 @@ public abstract class OffensiveEquipment extends Cell {
 
     @Override
     public String toString() {
-        return "attackLevel=" + attackLevel +
+        return "OffensiveEquipment{" +
+                "type='" + type + '\'' +
+                ", attackLevel=" + attackLevel +
                 ", name='" + name + '\'' +
                 '}';
     }

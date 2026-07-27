@@ -2,6 +2,7 @@ package fr.campus.dungeoncrawler.model.character;
 
 import fr.campus.dungeoncrawler.model.equipment.defensive.DefensiveEquipment;
 import fr.campus.dungeoncrawler.model.equipment.offensive.OffensiveEquipment;
+import fr.campus.dungeoncrawler.model.equipment.offensive.weapon.Sword;
 
 /**
  * Represents a general character in the game.
@@ -11,12 +12,12 @@ import fr.campus.dungeoncrawler.model.equipment.offensive.OffensiveEquipment;
  */
 public abstract class Character {
     // Fields
-    protected String type;
-    protected String name;
-    protected int healthLevel;
-    protected int attackLevel;
-    protected OffensiveEquipment offensiveEquipment;
-    protected DefensiveEquipment defensiveEquipment;
+    private String type;
+    private String name;
+    private int healthLevel;
+    private int attackLevel;
+    private OffensiveEquipment offensiveEquipment;
+    private DefensiveEquipment defensiveEquipment;
 
     /**
      * Creates a character with the specified characteristics.

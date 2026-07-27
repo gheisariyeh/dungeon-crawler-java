@@ -19,32 +19,31 @@ public class Menu {
     }
 
     public void displayMainMenu() {
+        System.out.println();
         System.out.println("Welcome");
-        System.out.println("please choose option number 1 or 2");
-        System.out.println("1. New character");
-        System.out.println("2. Quit");
-        System.out.println(">");
+        System.out.println("Please choose an option: ");
+        System.out.println("1. Press 1 to create a new character");
+        System.out.println("2. Press 2 to exit");
     }
 
     public void displaySecondMenu() {
-        System.out.println("");
-        System.out.println("please choose between the options:");
-        System.out.println("1. Start with new character");
-        System.out.println("2. Quit");
-        System.out.println("3. Change character name");
+        System.out.println();
+        System.out.println("Please choose between the options: ");
+        System.out.println("1. Press any key to start the game with new character");
+        System.out.println("2. Press 2 to exit");
+        System.out.println("3. Press 3 to change the character name");
         //System.out.println("4. Change character type");
-        System.out.println(">");
     }
+
     public void displayChangeName(){
         System.out.println("Enter new name: ");
     }
 
     public void displayThirdMenu(){
         System.out.println("");
-        System.out.println("please choose option number 1 or 2");
-        System.out.println("1. Do you want to restart the game?");
-        System.out.println("2. Quit");
-        System.out.println(">");
+        System.out.println("Please choose an option: ");
+        System.out.println("1. Restart the game");
+        System.out.println("2. Press 2 to exit");
     }
 
     /**
@@ -53,10 +52,10 @@ public class Menu {
      * @return the number entered by the user
      */
     public int readChoice() {
-        return Integer.parseInt(scanner.nextLine());
+            return Integer.parseInt(scanner.nextLine());
     }
 
-    /**
+        /**
      *
      * @return
      */
@@ -69,36 +68,45 @@ public class Menu {
         return choice;
     }
 
+    public void verifyChoice(){
+        while(true){
+            try {
+                this.readChoiceMenu();
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Please choose between the options: ");
+            }
+        }
+    }
+
     /**
      * Creates a character from the information entered by the user.
      *
      * @return the newly created character
      */
     public Character createCharacter() {
-        String type;
+        int type;
 
         while (true) {
 
-            System.out.println("Choose Warrior or Wizard:");
-            type = scanner.nextLine().trim();
+            System.out.println("Please choose between the two options: ");
+            System.out.println("1. Press 1 to create a Warrior");
+            System.out.println("2. Press 2 to create a Wizard");
 
-            if (type.equalsIgnoreCase("Warrior")){
-                System.out.println("Enter character name:");
+            type = this.readChoice();
+
+            if (type == 1){
+                System.out.println("Enter Warrior name:");
                 String name = scanner.nextLine().trim();
                 return new Warrior(name);
             }
-            if (type.equalsIgnoreCase("Wizard")) {
-                System.out.println("Enter character name:");
+            if (type == 2) {
+                System.out.println("Enter Wizard name:");
                 String name = scanner.nextLine().trim();
                 return new Wizard(name);
             }
-
             System.out.println("Invalid character type.");
         }
-
-
-
-
     }
 
     public String newName(){
