@@ -1,0 +1,314 @@
+@startuml
+
+' ========== Packages ==========
+
+package "fr.campus.dungeoncrawler" {
+    class Main {
+        +main(args: String[]): void
+    }
+}
+
+package "fr.campus.dungeoncrawler.model.cell" {
+    interface Cell {
+        +interact(character: Character): void
+    }
+
+    class EmptyCell {
+        +toString(): String
+        +interact(character: Character): void
+    }
+
+    Cell <|.. EmptyCell
+}
+
+package "fr.campus.dungeoncrawler.model.character" {
+    abstract class Character {
+        -type: String
+        -name: String
+        -healthLevel: int
+        -attackLevel: int
+        -offensiveEquipment: OffensiveEquipment
+        -defensiveEquipment: DefensiveEquipment
+        +Character(type: String, name: String, healthLevel: int, attackLevel: int, offensiveEquipment: OffensiveEquipment, defensiveEquipment: DefensiveEquipment)
+        +getType(): String
+        +getName(): String
+        +getHealthLevel(): int
+        +getAttackLevel(): int
+        +getOffensiveEquipment(): OffensiveEquipment
+        +getDefensiveEquipment(): DefensiveEquipment
+        +setType(type: String): void
+        +setName(name: String): void
+        +setHealthLevel(healthLevel: int): void
+        +setAttackLevel(attackLevel: int): void
+        +setOffensiveEquipment(offensiveEquipment: OffensiveEquipment): void
+        +setDefensiveEquipment(defensiveEquipment: DefensiveEquipment): void
+        +toString(): String
+    }
+
+    package types {
+        class Warrior {
+            +Warrior(name: String)
+        }
+
+        class Wizard {
+            +Wizard(name: String)
+        }
+
+        Character <|-- Warrior
+        Character <|-- Wizard
+    }
+}
+
+package "fr.campus.dungeoncrawler.model.enemy" {
+    class Enemy {
+        -name: String
+        -lifePoints: int
+        -strength: int
+        +Enemy(name: String, lifePoints: int, strength: int)
+        +getName(): String
+        +getLifePoints(): int
+        +getStrength(): int
+        +toString(): String
+        +interact(character: Character): void
+    }
+
+    package types {
+        class Dragon {
+            +Dragon()
+            +toString(): String
+            +interact(character: Character): void
+        }
+
+        class Goblin {
+            +Goblin()
+            +toString(): String
+            +interact(character: Character): void
+        }
+
+        class Sorcerer {
+            +Sorcerer()
+            +toString(): String
+            +interact(character: Character): void
+        }
+
+        Enemy <|-- Dragon
+        Enemy <|-- Goblin
+        Enemy <|-- Sorcerer
+    }
+
+    Cell <|.. Enemy
+}
+
+package "fr.campus.dungeoncrawler.model.equipment" {
+    package defensive {
+        abstract class DefensiveEquipment {
+            -type: String
+            -defenseLevel: int
+            -name: String
+            +DefensiveEquipment(type: String, defenseLevel: int, name: String)
+            +getType(): String
+            +getDefenseLevel(): int
+            +getName(): String
+            +setType(type: String): void
+            +setDefenseLevel(defenseLevel: int): void
+            +setName(name: String): void
+            +toString(): String
+        }
+
+        Cell <|.. DefensiveEquipment
+
+        package potion {
+            class Potion {
+                +Potion(defenseLevel: int, name: String)
+                +toString(): String
+                +interact(character: Character): void
+            }
+
+            class StandardPotion {
+                +StandardPotion()
+                +toString(): String
+                +interact(character: Character): void
+            }
+
+            class LargePotion {
+                +LargePotion()
+                +toString(): String
+                +interact(character: Character): void
+            }
+
+            DefensiveEquipment <|-- Potion
+            Potion <|-- StandardPotion
+            Potion <|-- LargePotion
+        }
+
+        package shield {
+            class Shield {
+                +Shield(defenseLevel: int, name: String)
+                +toString(): String
+                +interact(character: Character): void
+            }
+
+            class SimpleShield {
+                +SimpleShield(type: String, defenseLevel: int, name: String)
+                +toString(): String
+                +interact(character: Character): void
+            }
+
+            DefensiveEquipment <|-- Shield
+            DefensiveEquipment <|-- SimpleShield
+        }
+    }
+
+    package offensive {
+        abstract class OffensiveEquipment {
+            -type: String
+            -attackLevel: int
+            -name: String
+            +OffensiveEquipment(type: String, attackLevel: int, name: String)
+            +getType(): String
+            +getAttackLevel(): int
+            +getName(): String
+            +setType(type: String): void
+            +setAttackLevel(attackLevel: int): void
+            +setName(name: String): void
+            +toString(): String
+        }
+
+        Cell <|.. OffensiveEquipment
+
+        package weapon {
+            class Weapon {
+                +Weapon(attackLevel: int, name: String)
+                +toString(): String
+                +interact(character: Character): void
+            }
+
+            class Club {
+                +Club()
+                +toString(): String
+                +interact(character: Character): void
+            }
+
+            class Sword {
+                +Sword()
+                +toString(): String
+                +interact(character: Character): void
+            }
+
+            OffensiveEquipment <|-- Weapon
+            Weapon <|-- Club
+            Weapon <|-- Sword
+        }
+
+        package spell {
+            class Spell {
+                +Spell(attackLevel: int, name: String)
+                +toString(): String
+                +interact(character: Character): void
+            }
+
+            class Fireball {
+                +Fireball()
+                +toString(): String
+                +interact(character: Character): void
+            }
+
+            class Lightning {
+                +Lightning()
+                +toString(): String
+                +interact(character: Character): void
+            }
+
+            OffensiveEquipment <|-- Spell
+            Spell <|-- Fireball
+            Spell <|-- Lightning
+        }
+    }
+}
+
+package "fr.campus.dungeoncrawler.game" {
+    class Board {
+        -BOARD_SIZE: int
+        -cells: ArrayList<Cell>
+        +Board()
+        -initializeBoard(): void
+        +getCell(cellIndex: int): Cell
+        +toString(): String
+    }
+
+    class Dice {
+        -random: Random
+        +roll(): int
+    }
+
+    class Game {
+        -menu: Menu
+        -board: Board
+        -dice: Dice
+        -characterPosition: int
+        -character: Character
+        +Game(menu: Menu)
+        +start(): void
+        +startGame(): void
+        +reStartGame(): void
+        +changePosition(diceResult: int): void
+    }
+
+    Board "1" *-- "1" Cell
+    Game "1" *-- "1" Menu
+    Game "1" *-- "1" Board
+    Game "1" *-- "1" Dice
+}
+
+package "fr.campus.dungeoncrawler.ui" {
+    class Menu {
+        -scanner: Scanner
+        +Menu(scanner: Scanner)
+        +displayMainMenu(): void
+        +displaySecondMenu(): void
+        +displayChangeName(): void
+        +displayThirdMenu(): void
+        +readChoice(): int
+        +readChoiceMenu(): int
+        +verifyChoice(): void
+        +createCharacter(): Character
+        +newName(): String
+        +waitForEnter(): void
+        +displayCharacter(character: Character): void
+    }
+}
+
+package "fr.campus.dungeoncrawler.db" {
+    class DatabaseManager {
+        -URL: String
+        -USER: String
+        -PASSWORD: String
+        +getConnection(): Connection
+        +getHeroes(): void
+        +createHero(character: Character): int
+        +editHeroName(characterId: int, character: Character): void
+        +changeLifePoints(characterId: int, character: Character, lifePoints: int): void
+    }
+}
+
+package "fr.campus.dungeoncrawler.exception" {
+    class OutOfBoardException {
+        +OutOfBoardException(message: String)
+    }
+
+    Exception <|-- OutOfBoardException
+}
+
+' ========== Notes ==========
+
+note right of Character::Character
+  Abstract base class for all
+  player characters
+end note
+
+note right of Cell
+  Interface for all board elements
+  that can interact with characters
+end note
+
+@enduml
