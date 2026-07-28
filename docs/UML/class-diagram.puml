@@ -299,16 +299,4 @@ package "fr.campus.dungeoncrawler.exception" {
     Exception <|-- OutOfBoardException
 }
 
-' ========== Notes ==========
-
-note right of Character::Character
-  Abstract base class for all
-  player characters
-end note
-
-note right of Cell
-  Interface for all board elements
-  that can interact with characters
-end note
-
 @enduml
