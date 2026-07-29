@@ -2,6 +2,7 @@ fr.campus.dungeoncrawler
 fr.campus.dungeoncrawler.db
 fr.campus.dungeoncrawler.exception
 fr.campus.dungeoncrawler.game
+fr.campus.dungeoncrawler.game.Dice
 fr.campus.dungeoncrawler.model.cell
 fr.campus.dungeoncrawler.model.character
 fr.campus.dungeoncrawler.model.character.types
