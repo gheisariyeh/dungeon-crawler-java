@@ -110,7 +110,7 @@ public class DatabaseManager {
      * @param characterId
      * @param character
      */
-    public void editHeroName(int characterId, Character character) {
+    public void editHero(int characterId, Character character) {
         String sql = """
                 UPDATE characters
                 SET type = ?, name = ?, life_points = ?, strength = ?, offensive_equipment = ?, defensive_equipment = ?

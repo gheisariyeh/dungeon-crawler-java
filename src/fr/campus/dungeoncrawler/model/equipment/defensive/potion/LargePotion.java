@@ -14,10 +14,8 @@ public class LargePotion extends Potion{
 
     @Override
     public String toString() {
-        return "LargePotion{" +
-                "type='" + getType() + '\'' +
-                ", defenseLevel=" + getDefenseLevel() +
-                '}';
+        return "This cell contains a Large Potion which is a defensive equipment with "+
+                "defense Level of " + getDefenseLevel();
     }
 
 
@@ -41,15 +39,12 @@ public class LargePotion extends Potion{
         }
 
         int newHealth = Math.min(currentHealth + getDefenseLevel(), maxHealth);
+        setDefenseLevel((currentHealth + getDefenseLevel()) - maxHealth);
 
         character.setHealthLevel(newHealth);
 
-        System.out.println(
-                character.getName()
-                        + " used a large potion. Health: "
-                        + currentHealth
-                        + " -> "
-                        + newHealth
-        );
+        System.out.println(character.getName() + " used a large potion. Health: " + currentHealth + " -> " + newHealth);
+        System.out.println("The rest of the Large Potion of this cell is " + getDefenseLevel());
+        System.out.println();
     }
 }

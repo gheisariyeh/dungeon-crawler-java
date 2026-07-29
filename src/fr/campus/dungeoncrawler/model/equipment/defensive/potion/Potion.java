@@ -20,11 +20,8 @@ public class Potion extends DefensiveEquipment {
 
     @Override
     public String toString() {
-        return "Potion{" +
-                "type='" + getType() + '\'' +
-                ", defenseLevel=" + getDefenseLevel() +
-                ", name='" + getName() + '\'' +
-                '}';
+        return "This cell contains a Potion which is a defensive equipment with "+
+                "defense Level of " + getDefenseLevel();
     }
 
     @Override

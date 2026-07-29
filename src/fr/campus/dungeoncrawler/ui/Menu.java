@@ -46,6 +46,12 @@ public class Menu {
         System.out.println("2. Press 2 to exit");
     }
 
+
+    public void displayAttackMenu(){
+        System.out.println("Please choose an Action: ");
+        System.out.println("0. For Attack");
+        System.out.println("1. For Run away");
+    }
     /**
      * Reads the user's choice.
      *
@@ -60,12 +66,30 @@ public class Menu {
      * @return
      */
     public int readChoiceMenu(){
-        int choice = this.readChoice();
-        if(choice==2){
-            System.out.println("Goodbye!");
-            System.exit(0);
+        while(true){
+            try {
+                int choice = this.readChoice();
+                if(choice==2){
+                    System.out.println("Goodbye!");
+                    System.exit(0);
+                }
+                return choice;
+            } catch (NumberFormatException e) {
+                System.out.println("Please choose between the options: ");
+            }
         }
-        return choice;
+    }
+
+    public int readAttackMenu(){
+        while(true){
+            try {
+                int choice = this.readChoice();
+                return choice;
+            } catch (NumberFormatException e) {
+                System.out.println("Please choose between the options: ");
+            }
+        }
+
     }
 
     public void verifyChoice(){

@@ -11,10 +11,8 @@ public class Club extends Weapon {
 
     @Override
     public String toString() {
-        return "Club{" +
-                "type='" + getType() + '\'' +
-                ", attackLevel=" + getAttackLevel() +
-                '}';
+        return "This cell contains a Club which is an offensive equipment with "+
+                "attack level of " +  getAttackLevel();
     }
 
     /**
@@ -32,9 +30,11 @@ public class Club extends Weapon {
                 System.out.println(character.getName() + " picked up the club.");
             } else {
                 System.out.println("The current weapon is better than the club.");
+                System.out.println();
             }
         } else {
             System.out.println("Only a warrior can use a club.");
+            System.out.println();
         }
     }
 }

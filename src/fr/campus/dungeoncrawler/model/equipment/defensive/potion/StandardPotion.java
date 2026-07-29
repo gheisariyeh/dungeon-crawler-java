@@ -14,10 +14,8 @@ public class StandardPotion extends Potion{
 
     @Override
     public String toString() {
-        return "StandardPotion{" +
-                "type='" + getType() + '\'' +
-                ", defenseLevel=" + getDefenseLevel() +
-                '}';
+        return "This cell contains a Standard Potion which is a defensive equipment with "+
+                "defense Level of " + getDefenseLevel();
     }
 
     /**
@@ -40,15 +38,13 @@ public class StandardPotion extends Potion{
         }
 
         int newHealth = Math.min(currentHealth + getDefenseLevel(), maxHealth);
+        setDefenseLevel((currentHealth + getDefenseLevel()) - maxHealth);
 
         character.setHealthLevel(newHealth);
 
-        System.out.println(
-                character.getName()
-                        + " used a standard potion. Health: "
-                        + currentHealth
-                        + " -> "
-                        + newHealth
-        );
+        System.out.println(character.getName() + " used a standard potion. Health: " + currentHealth + " -> " + newHealth);
+        System.out.println("The rest of the Standard Potion of this cell is " + getDefenseLevel());
+        System.out.println();
+
         }
 }

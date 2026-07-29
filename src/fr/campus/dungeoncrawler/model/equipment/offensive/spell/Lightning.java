@@ -11,10 +11,8 @@ public class Lightning extends Spell {
 
     @Override
     public String toString() {
-        return "Lightning{" +
-                "type='" + getType() + '\'' +
-                ", attackLevel=" + getAttackLevel() +
-                '}';
+        return "This cell contains a Lightning which is an offensive equipment with "+
+                "attack level of " +  getAttackLevel();
     }
 
     /**
@@ -32,9 +30,11 @@ public class Lightning extends Spell {
                 System.out.println(character.getName() + " picked up the lightening.");
             } else {
                 System.out.println("The current spell is better than the lightening.");
+                System.out.println();
             }
         } else {
             System.out.println("Only a wizard can use a lightening!");
+            System.out.println();
         }
     }
 }

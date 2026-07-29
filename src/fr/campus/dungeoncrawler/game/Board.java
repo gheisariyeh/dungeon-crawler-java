@@ -129,6 +129,17 @@ public class Board {
         return cells.get(cellIndex);
     }
 
+    /**
+     * Changes a cell located at the specified index to an empty cell.
+     * @param index
+     * @return
+     */
+    public Cell makeEmpty(int index){
+        System.out.println("this cell is empty now!");
+        System.out.println("");
+        return cells.set(index,new EmptyCell());
+    }
+
     @Override
     public String toString() {
         return "Board{" +

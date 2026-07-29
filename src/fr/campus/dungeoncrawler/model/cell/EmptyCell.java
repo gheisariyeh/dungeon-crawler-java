@@ -6,13 +6,16 @@ import fr.campus.dungeoncrawler.model.character.Character;
  */
 public class EmptyCell implements Cell {
 
+    public EmptyCell() {
+    }
+
     @Override
     public String toString() {
-        return "Empty cell";
+        return "This is an empty cell";
     }
 
     @Override
     public void interact(Character character) {
-        // An empty cell intentionally has no effect.
+        // An empty cell has no effect.
     }
 }

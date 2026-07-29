@@ -10,13 +10,11 @@ public class Fireball extends Spell {
         super(7,"Fireball");
     }
 
+
     @Override
     public String toString() {
-        return "Fireball{" +
-                "type='" + getType() + '\'' +
-                ", attackLevel=" + getAttackLevel() +
-                ", name='" + getName() + '\'' +
-                '}';
+        return "This cell contains a Fireball which is an offensive equipment with "+
+                "attack level of " +  getAttackLevel();
     }
 
     /**
@@ -34,9 +32,11 @@ public class Fireball extends Spell {
                 System.out.println(character.getName() + " picked up the fireball.");
             } else {
                 System.out.println("The current spell is better than the fireball.");
+                System.out.println();
             }
         } else {
             System.out.println("Only a wizard can use a fireball.");
+            System.out.println();
         }
 
     }

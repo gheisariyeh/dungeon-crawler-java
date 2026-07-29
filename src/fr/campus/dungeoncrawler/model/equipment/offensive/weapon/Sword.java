@@ -11,10 +11,8 @@ public class Sword extends Weapon {
 
     @Override
     public String toString() {
-        return "Sword{" +
-                "type='" + getType() + '\'' +
-                ", attackLevel=" + getAttackLevel() +
-                '}';
+        return "This cell contains a Sword which is an offensive equipment with "+
+                "attack level of " +  getAttackLevel();
     }
 
     /**
@@ -32,9 +30,11 @@ public class Sword extends Weapon {
                 System.out.println(character.getName() + " picked up the sword.");
             } else {
                 System.out.println("The current weapon is better than the sword.");
+                System.out.println();
             }
         } else {
             System.out.println("Only a warrior can use a sword.");
+            System.out.println();
         }
     }
 }

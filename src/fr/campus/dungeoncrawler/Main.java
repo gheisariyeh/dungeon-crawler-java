@@ -1,6 +1,9 @@
 package fr.campus.dungeoncrawler;
 
 import fr.campus.dungeoncrawler.game.Board;
+import fr.campus.dungeoncrawler.game.Dice.Dice;
+import fr.campus.dungeoncrawler.game.Dice.SixSidedDice;
+import fr.campus.dungeoncrawler.game.Dice.TwentySidedDice;
 import fr.campus.dungeoncrawler.game.Game;
 import fr.campus.dungeoncrawler.ui.Menu;
 
@@ -19,8 +22,11 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         Menu menu = new Menu(scanner);
-        //Board board = new Board();
-        Game game = new Game(menu);
+        Board board = new Board();
+        Dice movementDice = new SixSidedDice();
+        Dice combatDice = new TwentySidedDice();
+
+        Game game = new Game(menu, board, movementDice, combatDice);
 
         game.start();
 
