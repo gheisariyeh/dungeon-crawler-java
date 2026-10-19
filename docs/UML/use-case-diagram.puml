@@ -1,0 +1,60 @@
+@startuml
+
+title Donjons & Dragons - Use Case Diagram
+
+left to right direction
+
+actor "Joueur" as Player
+
+rectangle "Jeu Donjons & Dragons" {
+
+    usecase "Créer un personnage" as CreateCharacter
+    usecase "Choisir le type\nWarrior / Wizard" as ChooseType
+    usecase "Donner un nom\nau personnage" as ChooseName
+
+    usecase "Démarrer une partie" as StartGame
+
+    usecase "Jouer un tour" as PlayTurn
+    usecase "Lancer le dé D6" as RollMovementDice
+    usecase "Se déplacer\nsur le plateau" as Move
+    usecase "Interagir avec une case" as Interact
+
+    usecase "Récupérer un\néquipement offensif" as OffensiveEquipment
+    usecase "Récupérer un\néquipement défensif" as DefensiveEquipment
+    usecase "Utiliser une potion" as Potion
+
+    usecase "Combattre un ennemi" as Combat
+    usecase "Attaquer" as Attack
+    usecase "Fuir" as Escape
+    usecase "Lancer le dé D20\npour l'attaque" as RollCombatDice
+
+    usecase "Recommencer\nune partie" as Restart
+    usecase "Quitter le jeu" as Quit
+}
+
+Player --> CreateCharacter
+Player --> StartGame
+Player --> PlayTurn
+Player --> Attack
+Player --> Escape
+Player --> Restart
+Player --> Quit
+
+CreateCharacter ..> ChooseType : <<include>>
+CreateCharacter ..> ChooseName : <<include>>
+
+PlayTurn ..> RollMovementDice : <<include>>
+PlayTurn ..> Move : <<include>>
+PlayTurn ..> Interact : <<include>>
+
+OffensiveEquipment ..> Interact : <<extend>>
+DefensiveEquipment ..> Interact : <<extend>>
+Potion ..> Interact : <<extend>>
+Combat ..> Interact : <<extend>>
+
+Attack ..> Combat : <<extend>>
+Escape ..> Combat : <<extend>>
+
+Attack ..> RollCombatDice : <<include>>
+
+@enduml
